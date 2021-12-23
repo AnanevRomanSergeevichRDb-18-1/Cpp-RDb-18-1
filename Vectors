@@ -1,0 +1,84 @@
+#include "Vector.h"
+using namespace vec;
+
+int main(){
+    
+vec::Vector vec[5] ={{3,3},{1,-1},{-4,2},{-3,-1},{12.3,-0.9}};
+!vec[0];
+!vec[1];
+!vec[2];
+!vec[3];
+!vec[4];
+for (int i=0,r=0; i<5; i++){
+     r=vec[i]*3;
+     std::cout<<"Единичный вектор умноженный на число= "<<r<<"\n";
+}
+//name.mirror();
+//name.par();
+//name.dob();
+//name.par();
+return 0;
+
+}
+
+#include <iostream>
+#include <cmath>
+namespace vec{
+  class Vector{
+  public:
+     float x,y;
+     
+     //Длина вектора
+     float len(){
+         return sqrt(x*x+y*y);
+     };
+     
+     //Параметры вектора
+     void par(){
+       std::cout<<x<<"\n";
+       std::cout<<y<<"\n"; 
+     };
+     
+     /*Угол наклона вектора
+     void angle(){*/
+         
+         
+     //Удвоение длины
+     float dob(){
+         x=x*2;
+         y=y*2;
+         return x;
+     };
+     //Перегрузка унарного оператора
+     void operator!(){
+         dob();
+         std::cout<<"x= "<<x<<','<<" y= "<<y<<"\n";
+     }
+     
+     //Отражение вектора
+     void mirror(){
+         x=x*(-1); 
+         y=y*(-1);
+     };
+     
+     //Перегрузка бинарного оператора
+     Vector operator*(int v2){
+         Vector result(1,1);
+         result.x=x*v2;
+         result.y=y*v2;
+         //std::cout<<"Я не умею так делать!\n";
+         return result;
+     }
+     
+     // Конструктор
+     Vector (float x0=1, float y0=1) {
+         std::cout<<"== Vector created ==\n";
+         x=x0;
+         y=y0;
+     };
+     // Деструктор
+     ~Vector(){
+         std::cout<<"xx Vector delete xx\n"; 
+     };
+      };
+}
