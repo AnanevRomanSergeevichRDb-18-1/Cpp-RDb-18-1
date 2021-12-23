@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+class Group{
+    //
+public:    
+    int girl;
+    int boy;
+    
+    int total();
+    
+    // Конструктор
+    Group(int a = 0, int b=0){
+        girl = a;
+        boy = b;
+    }
+    
+    // Деструктор
+    ~Group(){cout <<"Группа покинула здание\n";}
+};
+
+// Общая численность группы
+int Group::total(){
+    return girl+boy;
+    }
+#include <iostream>
+#include "gruppa.h"
+using namespace std;
+
+Group SummGroups(Group a, Group b){
+    Group c;
+    c.girl = a.girl + b.girl; 
+    c.boy = a.boy + b.boy;
+    return c;
+} 
+
+int main()
+{
+    Group group1(12, 13), group2(14,8);    // объявление двух групп
+    cout << group1.girl << "\n";    // число девушек
+    cout << group1.boy << "\n";    // число юношей
+    cout << group1.total() << "\n";    // число учащихся первой группы
+    cout << group2.total() << "\n";    // число учащихся второй группы
+    cout << SummGroups(group1, group2).total() << "\n";    // общее число
+
+    return 0;
+}
