@@ -1,0 +1,54 @@
+Ящики
+
+#include <iostream>
+using namespace std;
+
+class Box{
+    //
+public:    
+    int dl;
+    int shr;
+    int vys;
+    
+    int V();
+    int S();
+    
+    // Конструктор
+    Box(int a1=1, int b1=1, int c1=1){
+        dl = a1;
+        shr = b1;
+        vys = c1;
+    }
+    
+    // Деструктор
+    ~Box(){cout <<"Ящик был уничтожен\n";}
+};
+// Объём
+int Box::V(){
+    return dl*shr*vys;
+    }
+// Площадь
+int Box::S(){
+    return dl*shr;
+    }
+#include <iostream>
+#include "Box.h"
+using namespace std;
+
+int main()
+{
+    Box box1(3,12,9);
+    cout << "Новый ящик" << '\n';
+    cout << "Объём: " <<box1.V()<< '\n';
+    cout << "Знимаемая площадь: "<< box1.S()<< '\n';
+    Box box2(12,1,5);
+    cout << "Новый ящик" << '\n';
+    cout << "Объём: "<< box2.V()<< '\n';
+    cout << "Area: "<< box2.S()<< '\n';
+    Box box3(7,6,5);
+    cout << "Новый ящик" << '\n';
+    cout << "Объём: "<< box3.V()<< '\n';
+    cout << "Знимаемая площадь: "<< box3.S()<< '\n';
+
+    return 0;
+}
